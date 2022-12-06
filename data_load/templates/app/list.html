@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Сотрудники</h1>
+  <form class="home_form" action = "{% url 'app:home' %}" method = "get">
+    <input class="home_input" type="submit" value="На главную страницу" name="_home"/>
+  </form>
+  <div id="content">
+    {% for employee in employees %}
+      <form class="form_delete" action="" method="post">{% csrf_token %}
+        <div class="container-xxl">
+          <div class="row">
+            <div class="col">
+              <h2 class="info">{{ employee.last_name }} {{ employee.first_name }} {{ employee.middle_name }}</h2>
+            </div>
+            <div class="col">
+              <h2 class="info">{{ employee.department }}</h2>
+            </div>
+            <div class="col">
+             <img class="fit-picture" src="{{ employee.photo.url }}" alt="" width="100" height="100">
+            </div>
+            <div class="col">
+              <button type="button" class="btn btn-primary">
+                <a class="up" href="{% url 'app:employee_update' employee.pk %}">Обновление данных</a>
+              </button>
+            </div>
+            <div class="col">
+              <button type="button" class="btn btn-outline-danger">
+                <a class="del" href="{% url 'app:employee_delete' employee.pk %}">Удалить</a>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    {% endfor %}
+     <div class="example1-pagination">
+        {% if page_obj.has_previous %}
+            <a class="example1-pagination_link" href="?page=1">&laquo; первая</a>
+            <a class="example1-pagination_link" href="?page={{ page_obj.previous_page_number }}">предыдущая</a>
+        {% endif %}
+
+        <span class="example1-pagination_link example1-pagination_link__active">
+            Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a class="example1-pagination_link" href="?page={{ page_obj.next_page_number }}">следующая</a>
+            <a class="example1-pagination_link" href="?page={{ page_obj.paginator.num_pages }}">последняя &raquo;</a>
+        {% endif %}
+     </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Обновление данных сотрудника</h1>
+    <div class="update">
+        <form action="" method="post">{% csrf_token %}
+            {{ form.as_p }}
+          <p class="p_up">Пожалуйста, подтвердите действие по обновлению данных сотрудника "{{ employee.last_name }} {{ employee.first_name }}"?</p>
+          <input class="input_up" type="submit" value="Обновить"/>
+        </form>
+    </div>
+{% endblock content %}

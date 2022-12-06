@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container" id="my_container">
+        <div class="row">
+            <div class="card box-shadow m-2 form-wrap">
+                <div class="card-header text-center">
+                    <h3>Форма заполнения данных о сотруднике </h3>
+                </div>
+                <form class="person" action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+                  {{ form.as_p }}
+                    <input class="save" type="submit" value="Сохранить" name="_save"/>
+                </form>
+
+                <form class="home" action = "{% url 'app:home' %}" method = "get">
+                    <input type="submit" value="На главную" name="_home"/>
+                </form>
+            </div>
+        </div>
+</div>
+{% endblock content %}

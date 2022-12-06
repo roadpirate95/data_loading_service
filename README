@@ -1,0 +1,20 @@
+Для использования проекта:
+
+1 Вариант
+
+1)Запустите Docker (скачать https://docs.docker.com/get-docker/)
+2)git clone https://github.com/roadpirate95/data_loading_service.git
+3)переходим в директорию data_load(каталог с файлом manage.py)
+4)в командной строке docker-compose up -d --build
+5)в браузере переходим по адресу localhost:8000
+
+2 Вариант
+
+1)git clone https://github.com/roadpirate95/data_loading_service.git
+2)переходим в директорию data_load(каталог с файлом manage.py)
+3)устанавливаем зависимости pip install -r requirements.txt
+4)в терминале прописываем команды "python manage.py makemigrations &&
+                                   python manage.py migrate &&
+                                   python manage.py load_data"
+
+5)в браузере переходим по адресу localhost:8000

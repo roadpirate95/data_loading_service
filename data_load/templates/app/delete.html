@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Удалить сотрудника из базы данных</h1>
+    <div class="p_delete">
+        <form action="" method="post">{% csrf_token %}
+          <p>Пожалуйста, подтвердите действие по удалению сотрудника "{{ employee.last_name }} {{ employee.first_name }}"?</p>
+          <input type="submit" value="Удалить"/>
+        </form>
+    </div>
+{% endblock content %}
