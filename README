@@ -15,6 +15,7 @@
 3)устанавливаем зависимости pip install -r requirements.txt
 4)в терминале прописываем команды "python manage.py makemigrations &&
                                    python manage.py migrate &&
-                                   python manage.py load_data"
+                                   python manage.py load_data
+                                   python manage.py runserver"
 
 5)в браузере переходим по адресу localhost:8000
